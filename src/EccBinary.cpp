@@ -28,7 +28,7 @@ EccBinary::EccBinary(double m1, double m2, double et0, double F0) {
 EccBinary::~EccBinary() {
 	// TODO Auto-generated destructor stub
 
-	delete orb;
+	delete this->orb;
 }
 
 void EccBinary::calc_m()

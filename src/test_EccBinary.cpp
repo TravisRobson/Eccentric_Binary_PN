@@ -41,5 +41,7 @@ int main(int argc, char **argv)
 
 	cout << "\n==================================================\n" << endl;
 
+	delete eb;
+
 	return 0;
 }
