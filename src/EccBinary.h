@@ -19,18 +19,18 @@ class Orbit {
 private:
 	long N;				 // Number of samples for the solution (NOT number of detector samples!!!)
 
-	double *et, *n, *phi; // eccentricity, mean motion, orbital phase pointers
-	double *t;			  // time associated with the above samples
-
-	// interpolants and accelerators for the orbital parameters
-	gsl_interp_accel *e_acc;
-	gsl_spline *e_spline;
-
-	gsl_interp_accel *n_acc;
-	gsl_spline *n_spline;
-
-	gsl_interp_accel *phi_acc;
-	gsl_spline *phi_spline;
+//	double *et, *n, *phi; // eccentricity, mean motion, orbital phase pointers
+//	double *t;			  // time associated with the above samples
+//
+//	// interpolants and accelerators for the orbital parameters
+//	gsl_interp_accel *e_acc;
+//	gsl_spline *e_spline;
+//
+//	gsl_interp_accel *n_acc;
+//	gsl_spline *n_spline;
+//
+//	gsl_interp_accel *phi_acc;
+//	gsl_spline *phi_spline;
 
 public:
 	Orbit();
@@ -39,17 +39,29 @@ public:
 	long get_N() { return N; }
 	void set_N(long no) { N = no; } // This is dummy TODO
 
-	double get_etdot(double et, double x, EccBinary *eb, int PN);
-	double get_etdot_0PN(double et);
-	double get_etdot_1PN(double et, EccBinary *eb);
-
-	double get_ndot(double et, double x, EccBinary *eb, int PN);
-	double get_ndot_0PN(double et);
-	double get_ndot_1PN(double et, EccBinary *eb);
+//	double get_etdot(double et, double x, EccBinary *eb, int PN);
+//	double get_etdot_0PN(double et);
+//	double get_etdot_1PN(double et, EccBinary *eb);
+//
+//	double get_ndot(double et, double x, EccBinary *eb, int PN);
+//	double get_ndot_0PN(double et);
+//	double get_ndot_1PN(double et, EccBinary *eb);
 
 };
 
-//namespace eb {
+double get_etdot(double et, double x, EccBinary *eb);
+double get_etdot_0PN(double et);
+double get_etdot_1PN(double et, EccBinary *eb);
+
+double get_ndot(double et, double x, EccBinary *eb);
+double get_ndot_0PN(double et);
+double get_ndot_1PN(double et, EccBinary *eb);
+
+double get_x(double et, double n, EccBinary *eb);
+
+double check_LSO_condition(double F, double et, EccBinary *eb);
+int func_EccOrbit(double t, const double y[], double f[], void *params);
+void evolve_EccOrbit(EccBinary *eb);
 
 class EccBinary {
 
@@ -59,12 +71,14 @@ private:
 
 	double et0, F0; // initial eccentricity, initial mean orbital frequency (related to mean motion)
 
+	int PN;
+
 
 
 public:
 	Orbit *orb;
 
-	EccBinary(double m1, double m2, double et0, double F0);
+	EccBinary(double m1, double m2, double et0, double F0, int PN);
 	virtual ~EccBinary();
 
 	// Member function declarations
@@ -86,6 +100,12 @@ public:
 	double get_Mc() {
 		return Mc;
 	}
+	int get_PN()
+	{
+		return PN;
+	}
+	double get_et0() { return et0; }
+	double get_F0() { return F0; }
 
 	void calc_m();
 	void calc_mu();
@@ -94,7 +114,7 @@ public:
 	void calc_mass_parameters();
 };
 
-//} /* namespace eb */
+
 
 
 

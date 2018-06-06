@@ -20,17 +20,20 @@ using namespace std;
 
 int main(int argc, char **argv)
 {
+	int PN;
+
 	double m1,  m2;
 	double et0, F0;
 
 	cout << "\n==================================================\n" << endl;
 
+	PN = 1;
 	m1  = 10.0*TSUN;
 	m2  = 10.0*TSUN;
 	et0 = 0.1;
 	F0  = 5.0;
 
-	EccBinary *eb = new EccBinary(m1, m2, et0, F0);
+	EccBinary *eb = new EccBinary(m1, m2, et0, F0, PN);
 
 	cout << "m............ " << eb->get_m()/TSUN << " MSUN"  << endl;
 	cout << "eta.......... " << eb->get_eta()         	   << endl;

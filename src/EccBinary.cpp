@@ -8,15 +8,17 @@
 #include <cmath>
 
 #include "EccBinary.h"
+#include "Constants.h"
 
 //namespace eb {
 
-EccBinary::EccBinary(double m1, double m2, double et0, double F0) {
+EccBinary::EccBinary(double m1, double m2, double et0, double F0, int PN) {
 	// TODO Auto-generated constructor stub
 	this->m1  = m1;
 	this->m2  = m2;
 	this->et0 = et0;
 	this->F0  = F0;
+	this->PN  = PN;
 
 	calc_mass_parameters();
 
@@ -59,4 +61,25 @@ void EccBinary::calc_mass_parameters()
 	calc_Mc();
 }
 
+
+double check_LSO_condition(double F, double et, EccBinary *eb)
+{
+	// if this condition is negative the Last Stable Orbit (LSO) has not been breached
+	double condition;
+	double m = eb->get_m();
+
+	condition = (1. + et)/(6. + 2.*et);
+	condition = F - pow(condition, 1.5)/(PI2*m);
+
+	return condition;
+}
+
+
+
+
+
+
+
 //} /* namespace eb */
+
+
