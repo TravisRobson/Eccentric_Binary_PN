@@ -9,8 +9,11 @@
 #define ECCBINARY_H_
 
 #include <cstdlib>
+#include <string>
 
 #include <gsl/gsl_spline.h>
+
+using namespace std;
 
 class Orbit;
 class EccBinary;
@@ -73,6 +76,7 @@ private:
 
 	int PN;
 
+	char tag[256];
 
 
 public:
@@ -106,6 +110,7 @@ public:
 	}
 	double get_et0() { return et0; }
 	double get_F0() { return F0; }
+	string get_tag() {return tag; }
 
 	void calc_m();
 	void calc_mu();

@@ -41,6 +41,8 @@ int main(int argc, char **argv)
 
 	cout << "N for soln... " << eb->orb->get_N() << endl;
 
+	cout << "tag.......... " << eb->get_tag() << endl;
+
 
 	cout << "\n==================================================\n" << endl;
 

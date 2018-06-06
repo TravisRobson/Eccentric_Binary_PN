@@ -2,7 +2,7 @@
  * EccOrbit.cpp
  *
  *  Created on: Jun 5, 2018
- *      Author: travisrobson
+ *      Author: Travis Robson
  */
 
 #include <cmath>
@@ -172,10 +172,10 @@ void evolve_EccOrbit(EccBinary *eb)
 	double t, dt, Forb, e, p, LSO_condition;
 //	double y[3] = {eb->e0, eb->p0, eb->phi0};
 	double y[2] = {eb->get_et0(), PI2*eb->get_F0()};
-//
-//	char buf[512];
-//
-//	FILE *file;
+
+	char buf[512];
+
+	FILE *file;
 //
 //	strcpy(buf, "orbit_soln_");
 //	strcat(buf, eb->tag);
