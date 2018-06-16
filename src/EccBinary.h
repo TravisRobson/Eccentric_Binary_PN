@@ -64,6 +64,7 @@ double get_x(double et, double n, EccBinary *eb);
 
 double check_LSO_condition(double F, double et, EccBinary *eb);
 int func_EccOrbit(double t, const double y[], double f[], void *params);
+int jac_EccOrbit(double t, const double y[], double *dfdy, double dfdt[], void *params);
 void evolve_EccOrbit(EccBinary *eb);
 
 class EccBinary {
@@ -76,7 +77,7 @@ private:
 
 	int PN;
 
-	char tag[256];
+	string tag;
 
 
 public:
@@ -110,7 +111,7 @@ public:
 	}
 	double get_et0() { return et0; }
 	double get_F0() { return F0; }
-	string get_tag() {return tag; }
+	string get_tag() { return tag; }
 
 	void calc_m();
 	void calc_mu();

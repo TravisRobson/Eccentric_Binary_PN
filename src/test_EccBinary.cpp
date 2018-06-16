@@ -43,6 +43,7 @@ int main(int argc, char **argv)
 
 	cout << "tag.......... " << eb->get_tag() << endl;
 
+	evolve_EccOrbit(eb);
 
 	cout << "\n==================================================\n" << endl;
 

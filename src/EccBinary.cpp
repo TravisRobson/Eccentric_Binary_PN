@@ -7,6 +7,8 @@
 
 #include <cmath>
 #include <string>
+#include <fstream>
+
 
 #include "EccBinary.h"
 #include "Constants.h"
@@ -16,6 +18,7 @@ using namespace std;
 
 EccBinary::EccBinary(double m1, double m2, double et0, double F0, int PN) {
 	char buf[64];
+	char tag[256];
 
 	// TODO Auto-generated constructor stub
 	this->m1  = m1;
@@ -30,19 +33,26 @@ EccBinary::EccBinary(double m1, double m2, double et0, double F0, int PN) {
 	this->orb->set_N(10);    // dummy for now to make sure I coded things properly
 
 	// construct a unique identifying tag
-	sprintf(this->tag, "%.1f", this->m1/TSUN);
-	strcat(this->tag, "_");
+	sprintf(tag, "%.1f", this->m1/TSUN);
+	strcat(tag, "_");
 
 	sprintf(buf, "%.1f", this->m2/TSUN);
-	strcat(this->tag, buf);
-	strcat(this->tag, "_");
+	strcat(tag, buf);
+	strcat(tag, "_");
 
 	sprintf(buf, "%.2f", this->et0);
-	strcat(this->tag, buf);
-	strcat(this->tag, "_");
+	strcat(tag, buf);
+	strcat(tag, "_");
 
 	sprintf(buf, "%.1f", this->F0);
-	strcat(this->tag, buf);
+	strcat(tag, buf);
+	strcat(tag, "_");
+
+	sprintf(buf, "%d", this->PN);
+	strcat(tag, buf);
+	strcat(tag, "PN");
+
+	this->tag = string(tag);
 
 }
 
