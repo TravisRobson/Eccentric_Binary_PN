@@ -75,6 +75,7 @@ private:
 
 	double et0, F0; // initial eccentricity, initial mean orbital frequency (related to mean motion)
 
+
 	int PN;
 
 	string tag;
@@ -82,6 +83,8 @@ private:
 
 public:
 	Orbit *orb;
+
+	double FLSO, etLSO;
 
 	EccBinary(double m1, double m2, double et0, double F0, int PN);
 	virtual ~EccBinary();
