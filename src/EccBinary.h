@@ -74,7 +74,7 @@ private:
 	double m, mu, eta, Mc; // total mass, reduced mass, symmetric mass ratio
 
 	double et0, F0; // initial eccentricity, initial mean orbital frequency (related to mean motion)
-
+	double phi0;
 
 	int PN;
 
@@ -86,7 +86,7 @@ public:
 
 	double FLSO, etLSO;
 
-	EccBinary(double m1, double m2, double et0, double F0, int PN);
+	EccBinary(double m1, double m2, double et0, double F0, double phi0, int PN);
 	virtual ~EccBinary();
 
 	// Member function declarations
@@ -115,6 +115,7 @@ public:
 	double get_et0() { return et0; }
 	double get_F0() { return F0; }
 	string get_tag() { return tag; }
+	double get_phi0() { return phi0; }
 
 	void calc_m();
 	void calc_mu();

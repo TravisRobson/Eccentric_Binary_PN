@@ -16,7 +16,7 @@
 using namespace std;
 
 
-EccBinary::EccBinary(double m1, double m2, double et0, double F0, int PN) {
+EccBinary::EccBinary(double m1, double m2, double et0, double F0, double phi0, int PN) {
 	char buf[64];
 	char tag[256];
 
@@ -24,6 +24,7 @@ EccBinary::EccBinary(double m1, double m2, double et0, double F0, int PN) {
 	this->m1  = m1;
 	this->m2  = m2;
 	this->et0 = et0;
+	this->phi0 = phi0;
 	this->F0  = F0;
 	this->PN  = PN;
 
